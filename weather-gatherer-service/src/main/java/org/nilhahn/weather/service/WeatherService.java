@@ -13,8 +13,8 @@ import java.util.Optional;
 @Slf4j
 public class WeatherService {
 
-    private ObjectMapper objectMapper;
-    private Connector connector;
+    private final ObjectMapper objectMapper;
+    private final Connector connector;
     private String url = "http://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&appid={apiKey}";
 
     public WeatherService(Connector connector, String apiKey) {
