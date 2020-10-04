@@ -13,11 +13,11 @@ public class StorageService {
     private Storage storage;
 
     public StorageService(String storageMethod) {
-        this.storage = StorageFactory.getInstance(storageMethod);
+        this.storage = StorageFactory.getInstance(storageMethod)
+                .orElseThrow();
     }
 
     public void store(WeatherResponse weather) {
-        this.storage.write(weather);
     }
 
     public WeatherResponse read() {
