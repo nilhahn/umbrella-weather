@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.nilhahn.weather.connection.HttpConnector;
 import org.nilhahn.weather.model.WeatherResponse;
 import org.nilhahn.weather.service.CmdLineService;
+import org.nilhahn.weather.service.StorageService;
 import org.nilhahn.weather.service.WeatherService;
 
 import java.util.Optional;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class Application {
 
     public static void main(String[] args) {
+        StorageService storageService = new StorageService("");
         CmdLineService cmdLineService = new CmdLineService();
         cmdLineService.parse(args);
 
@@ -23,9 +25,6 @@ public class Application {
                 cmdLineService.getCmdLineParameter(CmdLineService.Parameter.LOCATION)
                         .orElseThrow(() -> new RuntimeException("Location is missing")));
 
-        response.ifPresent(weather -> {
-            log.info(weather.getWeather().get(0).getDescription());
-            log.info(String.valueOf(weather.getMain().getTemp()));
-        });
+        response.ifPresent(storageService::store);
     }
 }

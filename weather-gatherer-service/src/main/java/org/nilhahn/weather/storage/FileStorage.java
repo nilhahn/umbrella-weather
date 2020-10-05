@@ -28,9 +28,9 @@ public class FileStorage implements Storage {
     public void write(WeatherData weather) {
         FileWriterWithEncoding writer = null;
         try {
-            File locationFile = this.initLocationFile(weather.getCityName());
+            File locationFile = this.initLocationFile(String.valueOf(weather.getId()));
             writer = new FileWriterWithEncoding(locationFile, "UTF-8", true);
-            IOUtils.write(this.objectMapper.writeValueAsString(weather),
+            IOUtils.write(this.objectMapper.writeValueAsString(weather) + "\n",
                     writer);
         } catch (IOException exception) {
             log.error("Error while handling file for city [{}]", weather.getCityName());

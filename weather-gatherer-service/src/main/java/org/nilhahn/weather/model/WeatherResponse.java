@@ -1,13 +1,20 @@
 package org.nilhahn.weather.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.List;
 
 // https://openweathermap.org/current#current_JSON
 // https://openweathermap.org/weather-conditions
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class WeatherResponse {
     private Coordinates coord;
     private List<Weather> weather;

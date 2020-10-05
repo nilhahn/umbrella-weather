@@ -14,5 +14,11 @@ public class WeatherData {
     private String weatherDescription;
     private String weatherMain;
     private String weatherIcon;
-
+    private String temp;
+    private String tempMin;
+    private String tempMax;
+    private String feelsLike;
+    private String humidity;
+    private String pressure;
+    private String unixTime;
 }
