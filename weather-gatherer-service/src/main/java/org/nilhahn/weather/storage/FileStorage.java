@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Basic implementation of a storage.
+ * Has been implemented this way to save time and proceed with work on other parts of the system.
+ * May be replaced with a "real" database in the future
+ */
 @Slf4j
 public class FileStorage implements Storage {
 
