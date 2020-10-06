@@ -44,7 +44,7 @@ public class CmdLineService {
             log.error(e.getMessage());
             formatter.printHelp("weather-gatherer-service", this.options);
 
-            throw new Error("");
+            System.exit(0);
         }
     }
 
