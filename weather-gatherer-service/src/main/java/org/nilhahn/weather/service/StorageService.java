@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class StorageService {
 
-    private Storage storage;
+    private final Storage storage;
 
     public StorageService() {
         this.storage = StorageFactory.getInstance()
@@ -55,7 +55,7 @@ public class StorageService {
                 .weatherIcon(weatherData.getIcon())
                 .temp(weather.getMain().getTemp().toString())
                 .tempMin(weather.getMain().getTemp_min().toString())
-                .tempMin(weather.getMain().getTemp_max().toString())
+                .tempMax(weather.getMain().getTemp_max().toString())
                 .feelsLike(weather.getMain().getFeels_like().toString())
                 .humidity(weather.getMain().getHumidity().toString())
                 .pressure(weather.getMain().getPressure().toString())
