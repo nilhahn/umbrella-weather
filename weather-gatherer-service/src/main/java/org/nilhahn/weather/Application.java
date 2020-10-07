@@ -10,7 +10,7 @@ import org.nilhahn.weather.service.WeatherService;
 public class Application {
 
     public static void main(String[] args) {
-        StorageService storageService = new StorageService("");
+        StorageService storageService = new StorageService();
         CmdLineService cmdLineService = new CmdLineService();
         cmdLineService.parse(args);
 
