@@ -19,7 +19,7 @@ import java.util.List;
  * May be replaced with a "real" database in the future
  */
 @Slf4j
-public class FileStorage implements Storage {
+class FileStorage implements Storage {
 
     private ObjectMapper objectMapper = null;
     private String fileNameBase = "weather";
