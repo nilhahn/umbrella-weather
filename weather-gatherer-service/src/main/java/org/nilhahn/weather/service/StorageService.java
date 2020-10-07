@@ -19,8 +19,8 @@ public class StorageService {
 
     private Storage storage;
 
-    public StorageService(String storageMethod) {
-        this.storage = StorageFactory.getInstance(storageMethod)
+    public StorageService() {
+        this.storage = StorageFactory.getInstance()
                 .orElseThrow();
     }
 
