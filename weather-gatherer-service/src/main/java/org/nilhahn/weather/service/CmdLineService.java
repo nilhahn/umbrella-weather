@@ -29,7 +29,7 @@ public class CmdLineService {
         Option apiKey = new Option("key", "apiKey", true, "open weather map api key");
         Option location = new Option("l", "location", true, "open weather location");
         apiKey.setRequired(true);
-        location.setRequired(true);
+        location.setRequired(false);
         this.options.addOption(apiKey);
         this.options.addOption(location);
     }
