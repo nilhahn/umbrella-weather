@@ -1,4 +1,4 @@
-package org.nilhahn.weather.service;
+package org.nilhahn.weather.provider;
 
 import lombok.extern.slf4j.Slf4j;
 import org.nilhahn.weather.connection.RequestHandler;
@@ -15,6 +15,7 @@ public class DataProviderService implements Runnable {
     private final Integer backlog;
     private final Integer port;
     private final RequestHandler handler;
+    private boolean running;
 
     public DataProviderService(Integer backlog, Integer port, RequestHandler handler) {
         this.port = port;
@@ -27,7 +28,8 @@ public class DataProviderService implements Runnable {
         ServerSocket server = null;
         try {
             server = new ServerSocket(port, backlog, InetAddress.getLoopbackAddress());
-            while (true) {
+            this.running = true;
+            while (this.running) {
                 Socket client = null;
                 try {
                     log.info("Start new server");
@@ -45,6 +47,16 @@ public class DataProviderService implements Runnable {
         } finally {
             this.close(server);
         }
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void shutdown() {
+        log.info("Shutting down server-thread");
+        this.running = false;
     }
 
     private void close(Closeable closeable) {

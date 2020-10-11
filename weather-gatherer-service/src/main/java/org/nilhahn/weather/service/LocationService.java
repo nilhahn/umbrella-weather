@@ -18,7 +18,7 @@ public class LocationService {
 
     public boolean addLocation(String location) {
         boolean result = false;
-        if(this.maxAmountOfLocations < this.locations.size() && !this.locations.contains(location)) {
+        if(this.maxAmountOfLocations > this.locations.size() && !this.locations.contains(location)) {
             result = this.locations.add(location);
         }
         return result;

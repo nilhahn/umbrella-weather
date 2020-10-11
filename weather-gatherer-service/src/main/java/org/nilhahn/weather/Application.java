@@ -4,16 +4,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.nilhahn.weather.connection.HttpConnector;
 import org.nilhahn.weather.connection.RequestHandler;
 import org.nilhahn.weather.service.CmdLineService;
-import org.nilhahn.weather.service.DataProviderService;
+import org.nilhahn.weather.provider.DataProviderService;
 import org.nilhahn.weather.service.LocationService;
 import org.nilhahn.weather.service.StorageService;
-import org.nilhahn.weather.service.WeatherRunnerService;
+import org.nilhahn.weather.provider.WeatherProviderService;
 import org.nilhahn.weather.service.WeatherService;
 
 @Slf4j
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         StorageService storageService = new StorageService();
         CmdLineService cmdLineService = new CmdLineService();
         LocationService locationService = LocationService.getInstance(5);
@@ -29,15 +29,18 @@ public class Application {
                         .orElseThrow(() -> new RuntimeException("Api Key is missing"))
         );
 
-        WeatherRunnerService weatherRunnerService = new WeatherRunnerService(
+        WeatherProviderService weatherProviderService = new WeatherProviderService(
                 locationService,
                 weatherService,
                 storageService
         );
 
         // start server thread
-        dataProviderService.run();
+        Thread serverThread = new Thread(dataProviderService);
 
-        weatherRunnerService.run();
+        serverThread.start();
+        weatherProviderService.run();
+
+        serverThread.join();
     }
 }
