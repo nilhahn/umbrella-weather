@@ -21,7 +21,7 @@ public class StorageService {
 
     public StorageService() {
         this.storage = StorageFactory.getInstance()
-                .orElseThrow();
+                .orElseThrow(IllegalStateException::new); // TODO: add proper Exception for compatibility to Java8
     }
 
     public void store(WeatherResponse weather) {

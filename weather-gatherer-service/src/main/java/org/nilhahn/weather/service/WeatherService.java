@@ -1,6 +1,7 @@
 package org.nilhahn.weather.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.nilhahn.weather.connection.Connector;
@@ -19,7 +20,7 @@ public class WeatherService {
 
     public WeatherService(Connector connector, String apiKey) {
         this.connector = connector;
-        this.objectMapper = new ObjectMapper();
+        this.objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         this.url = url.replace("{apiKey}", apiKey);
     }

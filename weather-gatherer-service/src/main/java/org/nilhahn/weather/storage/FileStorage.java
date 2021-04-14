@@ -48,12 +48,14 @@ class FileStorage implements Storage {
     @Override
     public WeatherData read(String location) throws IOException {
         List<String> data = this.readAllAsString(location);
+        log.info("Found {} data entries for the location {}", data.size(), location);
         return this.objectMapper.readValue(data.get(data.size() - 1), WeatherData.class);
     }
 
     @Override
     public List<WeatherData> readAll(String location) throws IOException {
         List<String> content = this.readAllAsString(location);
+
         List<WeatherData> weatherData = new ArrayList<>();
         content.forEach(elem -> {
             try {

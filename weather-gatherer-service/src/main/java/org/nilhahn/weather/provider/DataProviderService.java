@@ -27,7 +27,8 @@ public class DataProviderService implements Runnable {
     public void run() {
         ServerSocket server = null;
         try {
-            server = new ServerSocket(port, backlog, InetAddress.getLoopbackAddress());
+            //server = new ServerSocket(port, backlog, InetAddress.getLoopbackAddress());
+            server = new ServerSocket(port, backlog);
             this.running = true;
             while (this.running) {
                 Socket client = null;
