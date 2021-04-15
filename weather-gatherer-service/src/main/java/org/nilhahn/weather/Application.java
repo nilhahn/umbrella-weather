@@ -17,7 +17,7 @@ public class Application {
         StorageService storageService = new StorageService();
         CmdLineService cmdLineService = new CmdLineService();
         LocationService locationService = LocationService.getInstance(5);
-        RequestHandler requestHandler = new RequestHandler(locationService, storageService);
+        RequestHandler requestHandler = new RequestHandler(storageService);
         DataProviderService dataProviderService = new DataProviderService(1, 8080, requestHandler);
 
         cmdLineService.parse(args);
