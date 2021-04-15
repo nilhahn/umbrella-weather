@@ -1,9 +1,9 @@
 package org.nilhahn.weather.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.nilhahn.weather.model.TempratureAndHumidity;
-import org.nilhahn.weather.model.Weather;
-import org.nilhahn.weather.model.WeatherResponse;
+import org.nilhahn.weather.model.weather.TempratureAndHumidity;
+import org.nilhahn.weather.model.weather.Weather;
+import org.nilhahn.weather.model.weather.WeatherResponse;
 import org.nilhahn.weather.storage.Storage;
 import org.nilhahn.weather.storage.StorageFactory;
 import org.nilhahn.weather.storage.data.WeatherData;
@@ -21,7 +21,7 @@ public class StorageService {
 
     public StorageService() {
         this.storage = StorageFactory.getInstance()
-                .orElseThrow(IllegalStateException::new); // TODO: add proper Exception for compatibility to Java8
+                .orElseThrow(IllegalStateException::new);
     }
 
     public void store(WeatherResponse weather) {

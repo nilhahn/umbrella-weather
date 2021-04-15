@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.nilhahn.weather.connection.Connector;
 import org.nilhahn.weather.exception.NetworkException;
-import org.nilhahn.weather.model.WeatherResponse;
+import org.nilhahn.weather.model.weather.WeatherResponse;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
