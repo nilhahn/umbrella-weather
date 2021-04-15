@@ -1,4 +1,4 @@
-package org.nilhahn.weather.model;
+package org.nilhahn.weather.model.weather;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
