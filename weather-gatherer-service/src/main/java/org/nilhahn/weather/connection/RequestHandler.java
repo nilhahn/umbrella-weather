@@ -1,12 +1,10 @@
 package org.nilhahn.weather.connection;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.nilhahn.weather.controller.RequestController;
 import org.nilhahn.weather.model.connection.Request;
 import org.nilhahn.weather.model.connection.RequestMethod;
 import org.nilhahn.weather.model.connection.Response;
-import org.nilhahn.weather.service.StorageService;
-import org.nilhahn.weather.controller.RequestController;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,15 +16,7 @@ import java.util.Scanner;
 @Slf4j
 public class RequestHandler{
 
-    private final StorageService storage;
-    private final ObjectMapper objectMapper;
-
     private Map<RequestMethod, RequestController> handler = new HashMap<>();
-
-    public RequestHandler(StorageService storage) {
-        this.storage = storage;
-        this.objectMapper = new ObjectMapper();
-    }
 
     public void registerHandler(RequestMethod method, RequestController requestController) {
         handler.put(method, requestController);

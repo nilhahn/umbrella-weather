@@ -19,7 +19,7 @@ public class Response {
     }
 
     private String createFieldMethod(RequestMethod method) {
-        return method.toString();
+        return method.getMethodString();
     }
 
     private String createFieldLength(Integer length) {
@@ -27,7 +27,17 @@ public class Response {
     }
 
     private String createFieldSequence(Integer seq) {
-        // TODO: create field 
-        return String.valueOf(seq);
+        String sequenceString = String.valueOf(seq);
+        char[] result = new char[2];
+
+        for(int index = 0; index < 2; index++) {
+            if(index < sequenceString.length()) {
+                result[index] = sequenceString.charAt(index);
+            } else {
+                result[0] = ' ';
+            }
+        }
+
+        return new String(result);
     }
 }
